@@ -19,4 +19,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="items.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="items.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="order.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

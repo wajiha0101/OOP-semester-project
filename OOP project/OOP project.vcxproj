@@ -129,6 +129,14 @@
   <ItemGroup>
     <ClCompile Include="OOP project.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="items.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="items.h" />
+    <ClInclude Include="order.h" />
+    <ClInclude Include="user.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
