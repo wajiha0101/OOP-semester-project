@@ -71,4 +71,41 @@ public:
 		}
 	}
 
+	void loadorder(const string& orderpath) {
+		ifstream orderfile(orderpath);
+		if (!orderfile.is_open()) {
+			cout << "File not found\n";
+			return;
+		}
+		string line;
+		// for items
+		while (getline(orderfile, line)) {
+			string id, name, price;
+			stringstream ss(line);
+			ss >> id >> name >> price;
+			ordrcart.additem(Item(id, name, price));
+		}
+		//for customer
+		while (getline(orderfile, line)) {
+			string name, email, address;
+			int phone;
+			getline(orderfile, name);
+			getline(orderfile, email);
+			getline(orderfile, address);
+			orderfile >> phone;
+			cin.ignore();
+		}
+
+		double total;
+		file >> total;   // Read total from file
+		totalprice = total;  // Assign total to the class variable to store it temporaily
+		orderitems.push_back(orderCart);  // Save the cart in the list
+
+	}
 };
+
+
+/*if (line.find("Total Price: $") != string::npos) {
+				string totalprice = line.substr(14);
+				ordrcart.settotalprice(stod(totalprice));
+			}*/
