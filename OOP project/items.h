@@ -15,7 +15,7 @@ public:
 	void displayItems()const {
 		cout << id << ". " << name << " - $" << price << endl;
 	}
-	void saveinfile(ofstream& itemsfile) {
+	 void saveinfile(ofstream& itemsfile) const {
 		itemsfile << id << " " << name << " " << price << endl;
 	}
 	static Items itemsfromfile(ifstream& itemsfile) {
@@ -25,10 +25,10 @@ public:
 		return Items(name, id, price);
 	}
 
-	vector<Items> loadfromfile(ifstream& itemsfile) {
+	vector<Items> loadfromfile(const string& itemspath) {
 		vector<Items> items;
-		ifstream itemsfile("items.txt");
-		if (!itemsfile) {
+		ifstream itemsfile(itemspath);
+		if (!itemsfile.is_open()) {
 			cout << "File not found\n";
 			return items;
 		}
@@ -38,9 +38,20 @@ public:
 		itemsfile.close();
 		return items; 
 	}
-	void saveitemsinfile(const vector<Items>& items,const string& itemsfile) {
-
+	void saveitemsinfile(const vector<Items>& ite,const string& itempath) {
+		ofstream itemsfile(itempath);
+		if (!itemsfile.is_open()) {
+			cout << "File not found\n";
+			return;
+		}
+		for (const auto& item : ite) {
+			item.saveinfile(itemsfile);
+		}
+		itemsfile.close();
+		cout << "Saved successfully\n";
 	}
+
+
 
 	//BUGET SEARCH FUNCTIONS
 	static void serach_by_budget(const vector<Items>&it) {
